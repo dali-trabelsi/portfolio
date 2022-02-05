@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "dali-portfolio"
+  },
+  "targets": {
+    "dali-portfolio": {
+      "hosting": {
+        "dali-trabelsi": [
+          "dali-portfolio"
+        ]
+      }
+    }
+  }
+}
