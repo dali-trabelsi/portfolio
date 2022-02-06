@@ -5,8 +5,8 @@
   "targets": {
     "dali-portfolio": {
       "hosting": {
-        "dali-trabelsi": [
-          "dali-portfolio"
+        "main": [
+          "dali-trabelsi"
         ]
       }
     }

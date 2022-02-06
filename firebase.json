@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "target": "dali-trabelsi",
+    "target": "main",
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   }
