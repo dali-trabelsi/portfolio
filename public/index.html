@@ -30,6 +30,9 @@
 
   <!-- g-reCaptcha api -->
   <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 </head>
 
 <body>
@@ -133,7 +136,7 @@
                   <div class="resume-item">
                     <h5 class="d-inline">2018 - Present</h5>
                     <h4 class="d-inline">
-                      Bachelor of Business Administration
+                      BSBA in Information Technology
                     </h4>
                     <br />
                     <br />
@@ -286,14 +289,14 @@
                   <div class="resume-item">
                     <h5 class="d-inline">2018 - Présent</h5>
                     <h4 class="d-inline">
-                      Bachelor en Administration d'affaires
+                      BSBA Information Technology
                     </h4>
                     <br />
                     <br />
                     <p><em>Tunis Business School, Université de Tunis</em></p>
                     <p>
-                      Diplôme de Bachelor attendu pour 2022 Specialisations
-                      Administration d'affaires et Information Technology.
+                      Diplôme de Bachelor attendu pour 2023 Spécialité
+                      Information Technology et Business Analytics.
                     </p>
                   </div>
                   <div class="resume-item">
@@ -799,14 +802,20 @@
             <div class="info">
               <div class="email">
                 <i class="icofont-envelope"></i>
-                <h4>Email:</h4>
+                <h4>Email</h4>
                 <p>trabelsimuhamedali@gmail.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="icofont-phone"></i>
+                <h4>Phone</h4>
+                <p>+216 21395619</p>
               </div>
 
               <div class="address my-5">
                 <i class="bx bxl-github"></i>
-                <h4>GitHub:</h4>
-                <a href="https://github.com/Dali-Trabelsi">
+                <h4>GitHub</h4>
+                <a href="https://github.com/Dali-Trabelsi" target="_blank">
                   <p>https://github.com/Dali-Trabelsi</p>
                 </a>
               </div>
@@ -927,6 +936,35 @@
     var url = "https://ipgeolocation.abstractapi.com/v1/?api_key=440e3daf3b02433ab3b3666aba7a4fe5"
     httpGetAsync(url, sendToMail)
 
+    firebase.initializeApp({
+      apiKey: "AIzaSyAjjUACChca-GddtuQQxWhTtKqxtwUBWRs",
+      authDomain: "dali-trabelsi.firebaseapp.com",
+      projectId: "dali-portfolio",
+    });
+
+    var db = firebase.firestore();
+
+    const links = document.querySelectorAll('a')
+    const imgs = document.querySelectorAll('img')
+
+    links.forEach(tracker);
+    imgs.forEach(tracker);
+
+    function tracker(elem) {
+      elem.addEventListener("click", function () {
+        db.collection("clicks").add({
+          elem: elem.outerHTML,
+          date: new Date(),
+        })
+          .then(() => {
+            console.log("Document successfully written!");
+          })
+          .catch((error) => {
+            console.error("Error writing document: ", error);
+          });
+
+      });
+    }
   </script>
 </body>
 
