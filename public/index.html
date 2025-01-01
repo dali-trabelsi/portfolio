@@ -13,19 +13,19 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 p-5">
     <!-- Language Toggle -->
     <div class="fixed top-4 right-4 z-50">
         <button id="langToggle" class="bg-white shadow-lg rounded-full px-4 py-2 flex items-center space-x-2">
-            <span class="text-sm font-medium">🇺🇸 EN</span>
+            <span class="text-sm font-medium" data-lang="en">🇺🇸 EN</span>
             <span class="text-gray-300">/</span>
-            <span class="text-sm font-medium opacity-50">🇫🇷 FR</span>
+            <span class="text-sm font-medium opacity-50" data-lang="fr">🇫🇷 FR</span>
         </button>
     </div>
 
     <!-- Header -->
     <header class="text-center py-10">
-        <h1 class="text-5xl font-extrabold" data-translate>
+        <h1 class="text-4xl font-extrabold" data-translate>
             <span data-lang="en">Welcome to My Portfolio</span>
             <span data-lang="fr" class="hidden">Bienvenue sur Mon Portfolio</span>
         </h1>
@@ -47,7 +47,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- EmyeHR Chatbot -->
             <div class="bg-white rounded-xl shadow-lg p-6" data-aos="fade-up">
-                <h3 class="text-xl font-bold mb-3 text-center">Multi-agent AI System</h3>
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">Multi-agent AI System</h3>
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="fr">Système IA Multi-Agent</h3>
 
                 <div class="flex justify-center">
                     <img src="images/emye.png" alt="Multi-agent HR Assistant Thumbnail"
@@ -85,7 +86,8 @@
 
             <!-- FlexiSpace -->
             <div class="bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
-                <h3 class="text-xl font-bold mb-3 text-center">FlexiSpace - Office Space Management</h3>
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">FlexiSpace - Office Space Management</h3>
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="fr">FlexiSpace - Gestion de Bureau</h3>
 
                 <div class="flex justify-center">
                     <img src="images/flexispace.png" alt="Office Space Management Thumbnail"
@@ -118,7 +120,10 @@
 
             <!-- Intelligent Surveys -->
             <div class="bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="text-xl font-bold mb-3">AI-Powered Customizable Surveys & Quizzes</h3>
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">AI-Powered Customizable Surveys & Quizzes
+                </h3>
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="fr">Enquêtes et Questionnaires Intelligents
+                </h3>
 
                 <div class="flex justify-center">
                     <img src="images/qsp.jpg" alt="AI-Powered Surveys Thumbnail" class="w-90 h-auto rounded-md my-4">
@@ -158,12 +163,47 @@
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- EmyeHR Chatbot -->
-            <div class="bg-white rounded-xl shadow-lg p-6" data-aos="fade-up">
-                <h3 class="text-xl font-bold mb-3 text-center">Leave Management System</h3>
+
+
+            <!-- FlexiSpace -->
+            <div class="bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">Job Postings Module</h3>
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="fr">Module Fiches de Poste</h3>
 
                 <div class="flex justify-center">
-                    <img src="images/emye.png" alt="Multi-agent HR Assistant Thumbnail"
+                    <img src="images/jobposting.png" alt="Office Space Management Thumbnail"
+                        class="w-90 h-auto rounded-md my-4">
+                </div>
+
+                <p class="text-gray-600 mb-4" data-translate>
+                    <span data-lang="en">Job posting management with tools for role creation, skill integration via
+                        ESCO, and real-time updates. Features include skill-based search, PDF exports, and interactive
+                        forms</span>
+                    <span data-lang="fr" class="hidden">Module de gestions des fiches de poste avec outils de création
+                        de rôles, intégration de compétences via ESCO et mises à jour en temps réel. Fonctionnalités
+                        incluent recherche par compétences, exports PDF et formulaires interactifs</span>
+
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">OptaPlanner</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Java/Quarkus</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Angular</span>
+                </div>
+
+                <div class="flex justify-center mt-5">
+                    <a href="https://www.linkedin.com/posts/emyehr_rh-recrutement-ia-activity-7243998058810601472-9zGO"
+                        target="_blank"
+                        class="inline-block px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700">
+                        View More
+                    </a>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6" data-aos="fade-up">
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">Leave Management System</h3>
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="fr">Gestionnaire des Congés</h3>
+
+                <div class="flex justify-center">
+                    <img src="images/conge.png" alt="Multi-agent HR Assistant Thumbnail"
                         class="w-90 h-auto rounded-md my-4">
                 </div>
                 <p class="text-gray-600 mb-4" data-translate>
@@ -197,52 +237,24 @@
                 </div>
             </div>
 
-            <!-- FlexiSpace -->
-            <div class="bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
-                <h3 class="text-xl font-bold mb-3 text-center">FlexiSpace - Office Space Management</h3>
 
-                <div class="flex justify-center">
-                    <img src="images/flexispace.png" alt="Office Space Management Thumbnail"
-                        class="w-90 h-auto rounded-md my-4">
-                </div>
-
-                <p class="text-gray-600 mb-4" data-translate>
-                    <span data-lang="en">The platform features drag-and-drop office layout design, advanced reservation
-                        rules, and collaboration tools, powered by constraint satisfaction algorithms and a hybrid
-                        database.</span>
-                    <span data-lang="fr" class="hidden">Développement d'un outil de gestion des espaces de bureau avec
-                        planification optimisée pour les espaces de travail, le parking et
-                        le covoiturage.</span>
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">OptaPlanner</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Java/Quarkus</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Angular</span>
-                </div>
-
-                <div class="flex justify-center mt-5">
-                    <a href="https://www.emye.fr/flexoffice-reservation-de-bureau-parking-et-covoiturage-flexispace/"
-                        target="_blank"
-                        class="inline-block px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700">
-                        View More
-                    </a>
-                </div>
-            </div>
-
-            <!-- Intelligent Surveys -->
             <div class="bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="text-xl font-bold mb-3">AI-Powered Customizable Surveys & Quizzes</h3>
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">Annual Meetings Module</h3>
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="fr">Module Entretiens Annuels</h3>
 
                 <div class="flex justify-center">
                     <img src="images/qsp.jpg" alt="AI-Powered Surveys Thumbnail" class="w-90 h-auto rounded-md my-4">
                 </div>
 
                 <p class="text-gray-600 mb-4" data-translate>
-                    <span data-lang="en">A web component featuring AI-driven
-                        question generation, conditional branching, customizable themes, reusable templates, employee
-                        targeting, and more.</span>
-                    <span data-lang="fr" class="hidden">Système de sondages avec génération de questions par IA et
-                        analyse automatique.</span>
+                    <span data-lang="en">Manages employee reviews with scheduling, customizable documents, AI-driven
+                        summaries, and automated reminders. Supports recurring evaluations, data aggregation, and
+                        validation workflows for streamlined performance tracking.</span>
+                    <span data-lang="fr" class="hidden">
+                        Gère les évaluations des employés avec planification, documents personnalisables, résumés
+                        générés par IA et rappels automatisés. Prend en charge les évaluations récurrentes, l'agrégation
+                        de données et les workflows de validation pour un suivi des performances simplifié.
+                    </span>
                 </p>
                 <div class="flex flex-wrap gap-2">
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">GPT</span>
@@ -251,12 +263,14 @@
                 </div>
 
                 <div class="flex justify-center mt-5">
-                    <a href="https://www.emye.fr/des-enquetes-ciblees-et-precises/" target="_blank"
+                    <a href="https://www.linkedin.com/posts/aimen-jouini-53124829_copiloterh-sirh-ia-ugcPost-7231290267851501568-UJye"
+                        target="_blank"
                         class="inline-block px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700">
                         View More
                     </a>
                 </div>
             </div>
+
 
         </div>
     </section>
@@ -313,16 +327,29 @@
         AOS.init({ duration: 800, once: true });
 
         const langToggle = document.getElementById("langToggle");
-        let currentLang = "en";
+        let currentLang = location.pathname.includes("/fr") ? "fr" : "en";
+        console.log(currentLang);
         langToggle.addEventListener("click", () => {
             currentLang = currentLang === "en" ? "fr" : "en";
             document.querySelectorAll("[data-lang]").forEach((el) => {
-                el.classList.toggle("hidden", el.dataset.lang !== currentLang);
                 if (el.parentElement === langToggle) {
                     el.classList.toggle("opacity-50", el.dataset.lang !== currentLang);
+                } else {
+                    el.classList.toggle("hidden", el.dataset.lang !== currentLang);
                 }
             });
         });
+        if (currentLang === "fr") {
+            setTimeout(() => {
+                document.querySelectorAll("[data-lang]").forEach((el) => {
+                    if (el.parentElement === langToggle) {
+                        el.classList.toggle("opacity-50", el.dataset.lang !== currentLang);
+                    } else {
+                        el.classList.toggle("hidden", el.dataset.lang !== currentLang);
+                    }
+                });
+            }, 100);
+        }
     </script>
 </body>
 
