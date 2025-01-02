@@ -17,10 +17,131 @@
         .shadow-custom {
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+
+
+        /* Add these new styles */
+        .zoomable-image {
+            cursor: zoom-in;
+            transition: opacity 0.3s ease;
+        }
+
+        .zoomable-image:hover {
+            opacity: 0.9;
+        }
+
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            cursor: zoom-out;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            margin: auto;
+            display: block;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            color: #bbb;
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.3) translateY(-50%);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(-50%);
+            }
+        }
+
+        .modal-content.active {
+            animation: zoomIn 0.3s ease;
+        }
     </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800 p-5">
+    <!-- Add this modal div at the end of the body, before scripts -->
+    <div id="imageModal" class="image-modal">
+        <span class="close-button">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Add this script before the closing body tag -->
+    <script>
+        // Initialize zoom functionality for all project images
+        function initializeImageZoom() {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeButton = document.querySelector('.close-button');
+
+            // Get all project images and add zoom functionality
+            document.querySelectorAll('.rounded-md.my-4').forEach(img => {
+                img.classList.add('zoomable-image');
+
+                img.onclick = function () {
+                    modal.style.display = 'block';
+                    modalImg.src = this.src;
+                    modalImg.classList.add('active');
+                }
+            });
+
+            // Close modal when clicking the close button
+            closeButton.onclick = function () {
+                modal.style.display = 'none';
+            }
+
+            // Close modal when clicking outside the image
+            modal.onclick = function (e) {
+                if (e.target === modal || e.target === modalImg) {
+                    modal.style.display = 'none';
+                }
+            }
+
+            // Close modal with escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        // Call the function after AOS initialization
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({ duration: 800, once: true });
+            initializeImageZoom();
+        });
+    </script>
+
+
+
+
+
+
+
     <!-- Language Toggle -->
     <div class="fixed top-4 right-4 z-50">
         <button id="langToggle" class="bg-white shadow-lg rounded-full px-4 py-2 flex items-center space-x-2">
@@ -285,7 +406,7 @@
                 <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">Module Entretiens Annuels</h3>
 
                 <div class="flex justify-center">
-                    <img src="images/qsp.jpg" alt="AI-Powered Surveys Thumbnail"
+                    <img src="images/entretiens.png" alt="AI-Powered Surveys Thumbnail"
                         class="w-90 h-auto rounded-md my-4 shadow-custom">
                 </div>
 
