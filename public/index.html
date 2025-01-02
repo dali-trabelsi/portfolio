@@ -11,6 +11,12 @@
     <title>Mohamed Ali Trabelsi | Full Stack Developer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+
+    <style>
+        .shadow-custom {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800 p-5">
@@ -30,10 +36,10 @@
             <span data-lang="fr" class="hidden">Bienvenue sur Mon Portfolio</span>
         </h1>
         <p class="text-lg mt-4 text-gray-600">
-            <span data-lang="en">Explore my journey as a Full Stack Developer, specializing in AI and
+            <span data-lang="en">Explore my journey as a Full Stack Developer, specializing in generative AI and
                 HR technologies.</span>
             <span data-lang="fr" class="hidden">Explorez mon parcours en tant que développeur Full Stack, spécialisé
-                en IA et technologies RH.</span>
+                en IA générative et technologies RH.</span>
         </p>
     </header>
 
@@ -52,7 +58,7 @@
 
                 <div class="flex justify-center">
                     <img src="images/emye.png" alt="Multi-agent HR Assistant Thumbnail"
-                        class="w-90 h-auto rounded-md my-4">
+                        class="w-90 h-auto rounded-md my-4 shadow-custom">
                 </div>
                 <p class="text-gray-600 mb-4">
                     <span data-lang="en">Architected and developed a sophisticated and interactive HR
@@ -71,15 +77,20 @@
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Python</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Angular</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Node.js</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">PostgreSQL</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">LLMs</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">RAG</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Prompt Engineering</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">n8n</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Azure</span>
                 </div>
 
                 <div class="flex justify-center mt-5">
                     <a href="https://youtu.be/hxBIjkUMz8U?si=loWxeTzMRuzMt6Pn" target="_blank"
-                        class="inline-block px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700">
-                        View More
+                        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+                        <span
+                            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            View More
                     </a>
                 </div>
             </div>
@@ -91,7 +102,7 @@
 
                 <div class="flex justify-center">
                     <img src="images/flexispace.png" alt="Office Space Management Thumbnail"
-                        class="w-90 h-auto rounded-md my-4">
+                        class="w-90 h-auto rounded-md my-4 shadow-custom">
                 </div>
 
                 <p class="text-gray-600 mb-4">
@@ -104,16 +115,26 @@
                     </span>
                 </p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">OptaPlanner</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Java/Quarkus</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Angular</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Node.js</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">PostgreSQL</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">OptaPlanner</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Java</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                        Constraint satisfaction</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                        Optimization</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                        SCSS</span>
                 </div>
 
                 <div class="flex justify-center mt-5">
                     <a href="https://www.emye.fr/flexoffice-reservation-de-bureau-parking-et-covoiturage-flexispace/"
                         target="_blank"
-                        class="inline-block px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700">
-                        View More
+                        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+                        <span
+                            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            View More
                     </a>
                 </div>
             </div>
@@ -127,7 +148,8 @@
                 </h3>
 
                 <div class="flex justify-center">
-                    <img src="images/qsp.jpg" alt="AI-Powered Surveys Thumbnail" class="w-90 h-auto rounded-md my-4">
+                    <img src="images/qsp.jpg" alt="AI-Powered Surveys Thumbnail"
+                        class="w-90 h-auto rounded-md my-4 shadow-custom">
                 </div>
 
                 <p class="text-gray-600 mb-4">
@@ -140,15 +162,23 @@
                     </span>
                 </p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">GPT</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                        Angular/Elements</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                        SCSS</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Web Components</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Node.js</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Generative AI</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">n8n</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">PostgreSQL</span>
                 </div>
 
                 <div class="flex justify-center mt-5">
                     <a href="https://www.emye.fr/des-enquetes-ciblees-et-precises/" target="_blank"
-                        class="inline-block px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700">
-                        View More
+                        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+                        <span
+                            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            View More
                     </a>
                 </div>
             </div>
@@ -173,7 +203,7 @@
 
                 <div class="flex justify-center">
                     <img src="images/jobposting.png" alt="Office Space Management Thumbnail"
-                        class="w-90 h-auto rounded-md my-4">
+                        class="w-90 h-auto rounded-md my-4 shadow-custom">
                 </div>
 
                 <p class="text-gray-600 mb-4">
@@ -186,16 +216,23 @@
 
                 </p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">OptaPlanner</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Java/Quarkus</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Angular</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Node.js</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">PostgreSQL</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">ESCO</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">PDF</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Reactive Forms</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">SCSS</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">n8n</span>
                 </div>
 
                 <div class="flex justify-center mt-5">
                     <a href="https://www.linkedin.com/posts/emyehr_rh-recrutement-ia-activity-7243998058810601472-9zGO"
                         target="_blank"
-                        class="inline-block px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700">
-                        View More
+                        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+                        <span
+                            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            View More
                     </a>
                 </div>
             </div>
@@ -205,7 +242,7 @@
 
                 <div class="flex justify-center">
                     <img src="images/conge.png" alt="Multi-agent HR Assistant Thumbnail"
-                        class="w-90 h-auto rounded-md my-4">
+                        class="w-90 h-auto rounded-md my-4 shadow-custom">
                 </div>
                 <p class="text-gray-600 mb-4">
                     <span data-lang="en">
@@ -222,18 +259,21 @@
 
 
                 <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Python</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Angular</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Node.js</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">LLMs</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">RAG</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">PostgreSQL</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">SCSS</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">n8n</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Payroll</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Data Extraction</span>
                 </div>
 
                 <div class="flex justify-center mt-5">
-                    <a href="https://youtu.be/hxBIjkUMz8U?si=loWxeTzMRuzMt6Pn" target="_blank"
-                        class="inline-block px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700">
-                        View More
+                    <a href="https://www.emye.fr" target="_blank"
+                        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+                        <span
+                            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            View More
                     </a>
                 </div>
             </div>
@@ -244,7 +284,8 @@
                 <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">Module Entretiens Annuels</h3>
 
                 <div class="flex justify-center">
-                    <img src="images/qsp.jpg" alt="AI-Powered Surveys Thumbnail" class="w-90 h-auto rounded-md my-4">
+                    <img src="images/qsp.jpg" alt="AI-Powered Surveys Thumbnail"
+                        class="w-90 h-auto rounded-md my-4 shadow-custom">
                 </div>
 
                 <p class="text-gray-600 mb-4">
@@ -258,16 +299,24 @@
                     </span>
                 </p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">GPT</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Web Components</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                        Angular</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Node.js</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                        SCSS</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">PostgreSQL</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Generative AI</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">n8n</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Richtext Editors</span>
                 </div>
 
                 <div class="flex justify-center mt-5">
                     <a href="https://www.linkedin.com/posts/aimen-jouini-53124829_copiloterh-sirh-ia-ugcPost-7231290267851501568-UJye"
                         target="_blank"
-                        class="inline-block px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700">
-                        View More
+                        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+                        <span
+                            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            View More
                     </a>
                 </div>
             </div>
@@ -279,13 +328,23 @@
     <!-- Contact Section -->
     <footer class="bg-gray-100 py-12">
         <div class="container mx-auto text-center">
-            <h2 class="text-2xl font-bold">
+            <h2 class="text-3xl font-bold">
                 <span data-lang="en">Get in Touch</span>
                 <span data-lang="fr" class="hidden">Contactez Moi</span>
             </h2>
             <p class="text-gray-600 mt-4">
-                Email:
-                <a href="mailto:trabelsimuhamedali@gmail.com" class="text-blue-500">trabelsimuhamedali@gmail.com</a>
+                <span class="font-bold">Email:</span>
+                <a href="mailto:trabelsimuhamedali@gmail.com" target="_blank"
+                    class="text-blue-500">trabelsimuhamedali@gmail.com</a>
+            </p>
+            <p class="text-gray-600 mt-4">
+                <span class="font-bold">Linkedin:</span>
+                <a href="https://www.linkedin.com/in/mohamed-ali-trabelsi/" target="_blank"
+                    class="text-blue-500">https://www.linkedin.com/in/mohamed-ali-trabelsi</a>
+            </p>
+            <p class="text-gray-600 mt-4">
+                <span class="font-bold">Phone:</span>
+                <a href="https://wa.me/+21621395619" target="_blank" class="text-blue-500">+216 21395619</a>
             </p>
         </div>
     </footer>
