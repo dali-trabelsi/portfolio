@@ -14,6 +14,10 @@
       ],
       "rewrites": [
         {
+          "source": "/css-radar/**",
+          "destination": "/css-radar/index.html"
+        },
+        {
           "source": "**",
           "destination": "/index.html"
         }
@@ -28,6 +32,10 @@
         "**/node_modules/**"
       ],
       "rewrites": [
+        {
+          "source": "/css-radar/**",
+          "destination": "/css-radar/index.html"
+        },
         {
           "source": "**",
           "destination": "/index.html"

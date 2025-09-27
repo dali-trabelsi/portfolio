@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="CSS Radar - Chrome extension for live CSS change tracking. Open source, ready for contributions." />
+  <title>CSS Radar | Open Source Chrome Extension</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+  <link rel="icon" href="../images/satellite.png" type="image/x-icon" />
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+
+    body {
+      background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.12), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.12), transparent 35%),
+        #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .glass {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.45);
+    }
+
+    .pulse-ring::before {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 2px solid rgba(59, 130, 246, 0.35);
+      animation: pulse 4s ease-out infinite;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 1;
+      }
+
+      60% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .radar-grid {
+      background-image:
+        radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0, rgba(59, 130, 246, 0.08) 70px, transparent 71px),
+        radial-gradient(circle at center, rgba(59, 130, 246, 0.08) 0, rgba(59, 130, 246, 0.06) 140px, transparent 141px),
+        linear-gradient(0deg, rgba(59, 130, 246, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.12) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.4);
+    }
+
+    .contrib-card:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .pill {
+      background: rgba(59, 130, 246, 0.15);
+      color: #93c5fd;
+    }
+
+    .code-block {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      background: #111827;
+      border-radius: 14px;
+      padding: 1.5rem;
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.7);
+    }
+
+    .link-pill {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(59, 130, 246, 0.1));
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .link-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(59, 130, 246, 0.25);
+      border-color: rgba(59, 130, 246, 0.45);
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+  <header class="max-w-6xl mx-auto px-6 py-10 flex items-center justify-between">
+    <a href="/" class="flex items-center space-x-3 text-slate-200">
+      <div class="relative w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center pulse-ring">
+        <span class="text-xl">🛰️</span>
+      </div>
+      <div>
+        <p class="text-sm uppercase tracking-widest text-slate-400">Open Source Spotlight</p>
+        <h1 class="text-2xl font-semibold">CSS Radar</h1>
+      </div>
+    </a>
+    <nav class="hidden md:flex items-center space-x-4">
+      <a href="#features" class="px-4 py-2 rounded-full link-pill">Features</a>
+      <a href="#showcase" class="px-4 py-2 rounded-full link-pill">Showcase</a>
+      <a href="#contribute" class="px-4 py-2 rounded-full link-pill">Contribute</a>
+      <a href="https://github.com/dali-trabelsi/CSS-Radar.git" target="_blank"
+        class="px-4 py-2 rounded-full bg-blue-500/80 hover:bg-blue-500 text-white transition">GitHub Repo</a>
+    </nav>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6">
+    <section class="grid md:grid-cols-2 gap-12 items-center py-12" data-aos="fade-up">
+      <div>
+        <span class="inline-flex items-center space-x-2 px-4 py-2 rounded-full pill text-sm uppercase tracking-widest">
+          <span class="text-blue-300">Live now</span>
+          <span class="text-slate-400">Chrome Side Panel Extension</span>
+        </span>
+        <h2 class="text-4xl md:text-5xl font-extrabold mt-6 leading-tight">
+          Monitor and capture live CSS changes <span class="text-blue-400">directly in Chrome</span>
+        </h2>
+        <p class="text-slate-300 mt-5 leading-relaxed text-lg">
+          CSS Radar gives developers a command center for styling experiments. Snapshot the DOM once, then stream and
+          aggregate every inline style update with precise selectors and a polished side panel experience.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <a href="/public/css-radar"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-semibold shadow-lg shadow-blue-600/30 transition">
+            Launch Live Demo
+            <span class="ml-2">↗</span>
+          </a>
+          <a href="https://github.com/dali-trabelsi/CSS-Radar.git" target="_blank"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-blue-400/40 text-blue-200 font-semibold hover:translate-y-[-1px] transition">
+            View on GitHub
+          </a>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-3 text-sm text-slate-400">
+          <span class="px-3 py-1 rounded-full border border-blue-400/30">Chrome Side Panel API</span>
+          <span class="px-3 py-1 rounded-full border border-blue-400/30">MutationObserver</span>
+          <span class="px-3 py-1 rounded-full border border-blue-400/30">Realtime CSS Diffing</span>
+          <span class="px-3 py-1 rounded-full border border-blue-400/30">MV3</span>
+        </div>
+      </div>
+      <div class="relative" data-aos="fade-left">
+        <div class="absolute inset-0 rounded-3xl blur-3xl bg-blue-500/10"></div>
+        <div class="glass rounded-3xl p-4 radar-grid">
+          <img src="../images/css-radar-demo.png" alt="CSS Radar demo screenshot"
+            class="rounded-2xl border border-blue-400/30" />
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="py-16">
+      <h3 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Built for experimental design work</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <article class="glass rounded-2xl p-6 feature-card transition" data-aos="fade-up">
+          <div class="text-blue-300 text-3xl mb-4">🛰️</div>
+          <h4 class="text-xl font-semibold mb-3">Side Panel Mission Control</h4>
+          <p class="text-slate-300 leading-relaxed">Launch tracking with a single click, access aggregated selectors,
+            and copy-ready change bundles without leaving DevTools.</p>
+        </article>
+        <article class="glass rounded-2xl p-6 feature-card transition" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-blue-300 text-3xl mb-4">🎯</div>
+          <h4 class="text-xl font-semibold mb-3">Selector Precision</h4>
+          <p class="text-slate-300 leading-relaxed">CSS Radar escalates specificity from IDs to classes, data
+            attributes, and tag fallbacks. Every entry is copy-ready and unambiguous.</p>
+        </article>
+        <article class="glass rounded-2xl p-6 feature-card transition" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-blue-300 text-3xl mb-4">⚡</div>
+          <h4 class="text-xl font-semibold mb-3">Realtime CSS Diffing</h4>
+          <p class="text-slate-300 leading-relaxed">Inline styles and updated style tags are diffed live. Removed
+            properties are flagged, new declarations surface instantly.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="showcase" class="py-16 grid md:grid-cols-2 gap-12 items-center">
+      <div data-aos="fade-right">
+        <h3 class="text-3xl font-bold mb-4">Unified change log + aggregated view</h3>
+        <p class="text-slate-300 leading-relaxed">Monitor raw updates while CSS Radar composes an organized summary for
+          export. The copy button delivers a ready-to-share stylesheet of the final state.</p>
+        <div class="code-block mt-6 text-sm"><span class="text-blue-300">#hero .cta</span> {
+          <span class="text-emerald-300">background</span>: linear-gradient(135deg, #3b82f6, #8b5cf6);
+          <span class="text-emerald-300">box-shadow</span>: 0 18px 45px rgba(59, 130, 246, 0.35);
+          <span class="text-red-300">/* border: removed */</span>
+          }
+        </div>
+      </div>
+      <div class="glass rounded-3xl p-8" data-aos="fade-left">
+        <p class="text-slate-200 text-lg font-semibold">Perfect companion for design sprints, live workshops, and
+          production debugging.</p>
+        <ul class="mt-6 space-y-4 text-slate-300">
+          <li class="flex items-start space-x-3"><span class="text-blue-300 text-xl">◆</span><span>Start/stop monitoring
+              without reloading the tab — MutationObserver handles the stream.</span></li>
+          <li class="flex items-start space-x-3"><span class="text-blue-300 text-xl">◆</span><span>Clipboard-ready
+              aggregated dump for commit descriptions, design handoff, or quick rollbacks.</span></li>
+          <li class="flex items-start space-x-3"><span class="text-blue-300 text-xl">◆</span><span>Extensible
+              architecture: service worker, modular content script, and Side Panel API view layer.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contribute" class="py-16">
+      <h3 class="text-3xl font-bold text-center mb-10" data-aos="fade-up">Contribute, extend, remix</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="glass rounded-2xl p-6 contrib-card transition" data-aos="fade-up">
+          <h4 class="text-xl font-semibold mb-2">Clone</h4>
+          <p class="text-sm text-slate-400 mb-4">Get the code and start exploring.</p>
+          <code class="code-block text-xs bg-slate-900" style="display: block;">
+            git clone https://github.com/dali-trabelsi/CSS-Radar.git <br>
+cd CSS-Radar</code>
+        </div>
+        <div class="glass rounded-2xl p-6 contrib-card transition" data-aos="fade-up" data-aos-delay="100">
+          <h4 class="text-xl font-semibold mb-2">Build & Test</h4>
+          <p class="text-sm text-slate-400 mb-4">Load unpacked extension, iterate in Chrome DevTools.</p>
+          <ul class="space-y-2 text-slate-300 text-sm">
+            <li>∙ Watch inline style changes</li>
+            <li>∙ Validate selector specificity</li>
+            <li>∙ Propose UI/UX enhancements</li>
+          </ul>
+        </div>
+        <div class="glass rounded-2xl p-6 contrib-card transition" data-aos="fade-up" data-aos-delay="200">
+          <h4 class="text-xl font-semibold mb-2">Connect</h4>
+          <p class="text-sm text-slate-400 mb-4">Collaborate with Mohamed Ali Trabelsi.</p>
+          <div class="space-y-2 text-sm">
+            <a class="link-pill block px-4 py-2 rounded-xl" href="https://github.com/dali-trabelsi"
+              target="_blank">GitHub Profile ↗</a>
+            <a class="link-pill block px-4 py-2 rounded-xl" href="https://mohamedalitrabelsi.tn"
+              target="_blank">Portfolio Website ↗</a>
+            <a class="link-pill block px-4 py-2 rounded-xl" href="https://www.linkedin.com/in/mohamed-ali-trabelsi"
+              target="_blank">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer
+    class="max-w-6xl mx-auto px-6 pb-16 pt-6 border-t border-slate-700/60 mt-12 flex flex-col md:flex-row md:items-center md:justify-between text-sm text-slate-400">
+    <p>Created by <a href="https://mohamedalitrabelsi.tn" target="_blank"
+        class="text-blue-300 hover:text-blue-200">Mohamed Ali Trabelsi</a> • Open source & community-driven</p>
+    <div class="flex space-x-4 mt-4 md:mt-0">
+      <a href="https://github.com/dali-trabelsi/CSS-Radar.git" target="_blank" class="hover:text-blue-200">GitHub</a>
+      <a href="https://mohamedalitrabelsi.tn" target="_blank" class="hover:text-blue-200">Website</a>
+      <a href="mailto:trabelsimuhamedali@gmail.com" class="hover:text-blue-200">Contact</a>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
+</body>
+
+</html>
