@@ -132,11 +132,39 @@
         }
 
         .project-action {
-            white-space: nowrap;
+            white-space: normal;
+            text-align: center;
         }
 
         #floatingLangToggleContainer {
             transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        @media (max-width: 700px) {
+            .project-footer {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.85rem;
+            }
+
+            .project-footer > div {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 0.65rem;
+            }
+
+            .project-action {
+                width: auto;
+                max-width: 100%;
+            }
+
+            .company-link {
+                justify-content: center;
+            }
         }
     </style>
 
@@ -569,7 +597,7 @@
                         <img src="images/logo_westic.jpg" alt="Westic" class="company-logo">
                     </a>
 
-                    <div class="flex flex-row gap-2 items-end">
+                    <div class="flex flex-wrap justify-center gap-2 items-center">
                         <a href="https://xd.adobe.com/view/9ad6cb00-21cb-44d6-a000-ea3ec56ba974-cf85/grid"
                             target="_blank" rel="noopener noreferrer"
                             class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">

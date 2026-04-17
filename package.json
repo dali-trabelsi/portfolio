@@ -1,0 +1,12 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "main": "public/index.html",
+  "scripts": {
+    "deploy": "firebase deploy --only hosting",
+    "serve": "firebase serve --only hosting"
+  },
+  "author": "Dali Trabelsi",
+  "license": "",
+  "description": ""
+}
