@@ -94,6 +94,50 @@
         .modal-content.active {
             animation: zoomIn 0.3s ease;
         }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(229, 231, 235, 0.9);
+        }
+
+        .company-link {
+            display: inline-flex;
+            align-items: center;
+            flex-shrink: 0;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .company-link:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        .company-logo {
+            height: 2.35rem;
+            width: auto;
+            max-width: 9rem;
+            object-fit: contain;
+            display: block;
+        }
+
+        .project-action {
+            white-space: nowrap;
+        }
+
+        #floatingLangToggleContainer {
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
     </style>
 
     <script type="text/javascript">
@@ -110,6 +154,16 @@
     <div id="imageModal" class="image-modal">
         <span class="close-button">&times;</span>
         <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Floating Language Toggle (appears on scroll) -->
+    <div id="floatingLangToggleContainer" class="fixed top-4 right-4 z-50 hidden">
+        <button id="langToggleFloating"
+            class="lang-toggle-btn bg-white shadow-lg rounded-full px-4 py-2 flex items-center space-x-2">
+            <span class="text-sm font-medium" data-lang="en">🇺🇸 EN</span>
+            <span class="text-gray-300">/</span>
+            <span class="text-sm font-medium opacity-50" data-lang="fr">🇫🇷 FR</span>
+        </button>
     </div>
 
     <!-- Add this script before the closing body tag -->
@@ -164,27 +218,28 @@
 
 
 
-    <!-- Language Toggle -->
-    <div class="fixed top-4 right-4 z-50">
-        <button id="langToggle" class="bg-white shadow-lg rounded-full px-4 py-2 flex items-center space-x-2">
-            <span class="text-sm font-medium" data-lang="en">🇺🇸 EN</span>
-            <span class="text-gray-300">/</span>
-            <span class="text-sm font-medium opacity-50" data-lang="fr">🇫🇷 FR</span>
-        </button>
-    </div>
-
     <!-- Header -->
     <header class="text-center py-10">
+        <!-- Language Toggle -->
+        <div id="headerLangToggleContainer" class="flex justify-center mb-5">
+            <button id="langToggle"
+                class="lang-toggle-btn bg-white shadow-lg rounded-full px-4 py-2 flex items-center space-x-2">
+                <span class="text-sm font-medium" data-lang="en">🇺🇸 EN</span>
+                <span class="text-gray-300">/</span>
+                <span class="text-sm font-medium opacity-50" data-lang="fr">🇫🇷 FR</span>
+            </button>
+        </div>
+
         <h1 class="text-4xl font-extrabold">
             <span data-lang="en">Welcome to My Portfolio</span>
             <span data-lang="fr" class="hidden">Bienvenue sur Mon Portfolio</span>
         </h1>
         <p class="text-lg mt-4 text-gray-600">
-            <span data-lang="en">Explore my journey as a Software Engineer, specializing in generative AI and
-                enterprise applications (SaaS).
+            <span data-lang="en">Explore my journey as a Software Engineer, specializing in enterprise SaaS applications
+                and AI workflows.
             </span>
             <span data-lang="fr" class="hidden">Explorez mon parcours en tant que développeur Full Stack, spécialisé en
-                IA générative et applications d'entreprise (SaaS).</span>
+                solutions SaaS et workflows IA.</span>
         </p>
     </header>
 
@@ -199,8 +254,346 @@
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Netisse SVG Pipeline -->
+            <div class="bg-white rounded-xl shadow-lg p-6 project-card" data-aos="fade-up">
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">SVG Floor Plan to 3D Map Pipeline</h3>
+                <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">Pipeline de Plans SVG vers Carte
+                    3D</h3>
+
+                <div class="flex justify-center">
+                    <img src="images/map3d.png?v=202509291000" alt="3D map engine pipeline cover"
+                        class="w-90 h-auto rounded-md my-4 shadow-custom">
+                </div>
+
+                <p class="text-gray-600 mb-4">
+                    <span data-lang="en">Spearheaded the full migration of a +10 year old Perl-based geospatial
+                        pipeline to a modular Node.js architecture, ensuring 100% parity across 500+ production SVG
+                        floor plans. Built a deterministic geometry engine using linear algebra, computational
+                        geometry, and regex processing to convert architectural floor plan SVGs into structured JSON
+                        for a 3D map engine.</span>
+                    <span data-lang="fr" class="hidden">Migration complète d'un pipeline géospatial historique basé
+                        sur Perl vers une architecture modulaire Node.js, avec une parité de 100 % sur plus de 500
+                        plans SVG de production. Développement d'un moteur géométrique déterministe utilisant l'algèbre
+                        linéaire, la géométrie computationnelle et le traitement regex pour convertir les plans SVG en
+                        JSON structuré pour un moteur de carte 3D.</span>
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">JavaScript</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">TypeScript</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">AngularJS</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Perl</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Three.js</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">3D Rendering</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Regex</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">XML/XPath</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Canvas API</span>
+                </div>
+
+                <div class="project-footer">
+                    <a href="https://www.netisse.fr/fr/" target="_blank" rel="noopener noreferrer" class="company-link"
+                        aria-label="Open Netisse website">
+                        <img src="images/logo_netisse.svg" alt="Netisse" class="company-logo">
+                    </a>
+
+                    <a href="https://www.netisse.fr/en/page/page-wfo-1" target="_blank" rel="noopener noreferrer"
+                        class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">
+                        <span
+                            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            <span data-lang="en">Open Product Page</span>
+                            <span data-lang="fr" class="hidden">Voir la page produit</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Netisse Mobile Platform -->
+            <div class="bg-white rounded-xl shadow-lg p-6 project-card" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">Hybrid Mobile Tablet Platform</h3>
+                <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">Plateforme Mobile Hybride pour
+                    Tablettes</h3>
+
+                <div class="flex justify-center">
+                    <img src="images/tablets.png?v=202509291000" alt="Hybrid mobile tablet platform cover"
+                        class="w-90 h-auto rounded-md my-4 shadow-custom">
+                </div>
+
+                <p class="text-gray-600 mb-4">
+                    <span data-lang="en">Architected a resilient hybrid mobile platform to replace a legacy
+                        AngularJS app while preserving backward compatibility across rooted Android tablets running API
+                        levels 23 through 31. Built custom Cordova plugins in Java for low-level Android integration,
+                        remote control, ADB access, and SSH tunneling.</span>
+                    <span data-lang="fr" class="hidden">Conception d'une plateforme mobile hybride résiliente pour
+                        remplacer une application AngularJS legacy tout en conservant la compatibilité avec une flotte
+                        hétérogène de tablettes Android rootées (API 23 à 31). Développement de plugins Cordova
+                        personnalisés en Java pour l'intégration Android bas niveau, le contrôle à distance, l'accès
+                        ADB et le tunneling SSH.</span>
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Angular 19</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Ionic</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">AngularJS</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Cordova</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Node.js</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">MySQL</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Java (Android SDK)</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Socket.IO</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">adbkit</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">SSH tunneling</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Android Shell</span>
+                </div>
+
+                <div class="project-footer">
+                    <a href="https://www.netisse.fr/fr/" target="_blank" rel="noopener noreferrer" class="company-link"
+                        aria-label="Open Netisse website">
+                        <img src="images/logo_netisse.svg" alt="Netisse" class="company-logo">
+                    </a>
+
+                    <a href="https://www.netisse.fr/en/page/wh-entreprise-1" target="_blank" rel="noopener noreferrer"
+                        class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">
+                        <span
+                            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            <span data-lang="en">Open Product Page</span>
+                            <span data-lang="fr" class="hidden">Voir la page produit</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navero -->
+            <div class="bg-white rounded-xl shadow-lg p-6 project-card" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">AI-Native Hiring Automation Platform</h3>
+                <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">Plateforme de Recrutement
+                    IA-Native</h3>
+
+                <div class="flex justify-center">
+                    <img src="images/cover_navero.avif?v=202509291000" alt="Navero AI hiring platform cover"
+                        class="w-90 h-auto rounded-md my-4 shadow-custom">
+                </div>
+
+                <p class="text-gray-600 mb-4">
+                    <span data-lang="en">Worked on an AI-native hiring platform enabling recruiters to automate
+                        candidate screening, assessments, and decision support through LLM-driven workflows. Built
+                        asynchronous LLM pipelines for automated candidate assessment and CV scoring, integrating
+                        multi-provider LLM SDKs.</span>
+                    <span data-lang="fr" class="hidden">Participation au développement d'une plateforme de
+                        recrutement IA-native permettant d'automatiser le screening des candidats, les évaluations et
+                        l'aide à la décision via des workflows pilotés par LLM. Mise en place de pipelines asynchrones
+                        pour l'évaluation automatique des candidats et le scoring des CV, avec intégration de SDK LLM
+                        multi-fournisseurs.</span>
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">TypeScript</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">JavaScript</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Python</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">FastAPI</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">PostgreSQL</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Next.js</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">React</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Prisma</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Supabase</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Redux</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">RabbitMQ</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Redis</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Docker</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">GCP</span>
+                </div>
+
+                <div class="project-footer">
+                    <a href="https://www.navero.me/#how-it-works" target="_blank" rel="noopener noreferrer"
+                        class="company-link" aria-label="Open Navero website">
+                        <img src="images/logo_navero.svg" alt="Navero" class="company-logo">
+                    </a>
+
+                    <a href="https://www.navero.me/#how-it-works" target="_blank" rel="noopener noreferrer"
+                        class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">
+                        <span
+                            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            <span data-lang="en">Open Product Page</span>
+                            <span data-lang="fr" class="hidden">Voir la page produit</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sagy -->
+            <div class="bg-white rounded-xl shadow-lg p-6 project-card" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">Multi-tenant AI Knowledge Base</h3>
+                <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">Base de Connaissances IA
+                    Multi-Tenant</h3>
+
+                <div class="flex justify-center">
+                    <img src="images/cover_sagy.png?v=202509291000" alt="Sagy platform cover"
+                        class="w-90 h-auto rounded-md my-4 shadow-custom">
+                </div>
+
+                <p class="text-gray-600 mb-4">
+                    <span data-lang="en">Collaborated on a multi-tenant AI-powered knowledge base platform. Worked on
+                        multi-model AI orchestration and LLM routing, built high-accuracy RAG on ChromaDB, integrated
+                        external connectors (Slack, Notion, Teams), and managed full-lifecycle Docker
+                        environments.</span>
+                    <span data-lang="fr" class="hidden">Collaboration sur une plateforme de base de connaissances IA
+                        multi-tenant. Travail sur l'orchestration multi-modèles, le routage LLM, la mise en place d'un
+                        RAG haute précision basé sur ChromaDB, l'intégration de connecteurs externes (Slack, Notion,
+                        Teams) et la gestion complète des environnements Docker.</span>
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Python</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Django (DRF)</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">JavaScript</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">TypeScript</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Next.js</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">React</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Docker</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Nginx</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Gunicorn</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Redis</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">PostgreSQL</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">ChromaDB</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Azure</span>
+                </div>
+
+                <div class="project-footer">
+                    <a href="https://sagy.ai/sagy-in-actions" target="_blank" rel="noopener noreferrer"
+                        class="company-link" aria-label="Open Sagy website">
+                        <img src="images/logo_sagy.svg" alt="Sagy" class="company-logo">
+                    </a>
+
+                    <a href="https://sagy.ai/sagy-in-actions" target="_blank" rel="noopener noreferrer"
+                        class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">
+                        <span
+                            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            <span data-lang="en">Demos</span>
+                            <span data-lang="fr" class="hidden">Démos</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Qinsights -->
+            <div class="bg-white rounded-xl shadow-lg p-6 project-card" data-aos="fade-up" data-aos-delay="400">
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">Qinsights RAG & AI Pipelines</h3>
+                <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">Pipelines RAG & IA Qinsights</h3>
+
+                <div class="flex justify-center">
+                    <img src="images/cover_qinsights.png?v=202509291000" alt="Qinsights platform cover"
+                        class="w-90 h-auto rounded-md my-4 shadow-custom">
+                </div>
+
+                <p class="text-gray-600 mb-4">
+                    <span data-lang="en">Led RAG performance improvements through optimized retrieval, chunking, and
+                        citation-grounded workflows, and integrated multi-model AI pipelines for chat, theme
+                        extraction, and sentiment analysis. Owned end-to-end Docker infrastructure across dev/test/prod
+                        with automated migrations.</span>
+                    <span data-lang="fr" class="hidden">Pilotage des optimisations de performance RAG via retrieval,
+                        chunking et workflows fondés sur les citations, avec intégration de pipelines IA multi-modèles
+                        pour le chat, l'extraction de thèmes et l'analyse de sentiments. Responsable de
+                        l'infrastructure Docker de bout en bout (dev/test/prod) avec migrations automatisées.</span>
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Python</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Django</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">PostgreSQL</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">pgvector</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">RAG</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Vector Search</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">LLM</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Azure</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Redis</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">WebSockets</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Docker</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">CI/CD</span>
+                </div>
+
+                <div class="project-footer">
+                    <a href="https://qinsights.ai/" target="_blank" rel="noopener noreferrer" class="company-link"
+                        aria-label="Open Qinsights website">
+                        <img src="images/logo_qinsights.png" alt="Qinsights" class="company-logo">
+                    </a>
+
+                    <a href="https://qinsights.ai/" target="_blank" rel="noopener noreferrer"
+                        class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">
+                        <span
+                            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            <span data-lang="en">Try for Free</span>
+                            <span data-lang="fr" class="hidden">Essayer gratuitement</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Westic -->
+            <div class="bg-white rounded-xl shadow-lg p-6 project-card" data-aos="fade-up" data-aos-delay="500">
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">Westic Logistics Platform (Web + Mobile)
+                </h3>
+                <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">Plateforme Logistique Westic
+                    (Web + Mobile)</h3>
+
+                <div class="flex justify-center">
+                    <img src="images/cover_westic.png?v=202509291000" alt="Westic logistics cover"
+                        class="w-90 h-auto rounded-md my-4 shadow-custom">
+                </div>
+
+                <p class="text-gray-600 mb-4">
+                    <span data-lang="en">Collaborated on a logistics platform across React (web), React Native/Expo
+                        (mobile), and Node.js/Express/MongoDB (backend). Built shipment/location flows with
+                        OpenStreetMap via Leaflet/React-Leaflet, contributed to JWT auth and role-based flows, async
+                        data fetching (axios/react-query), form validation, and deployment/operations.</span>
+                    <span data-lang="fr" class="hidden">Collaboration sur une plateforme logistique couvrant React
+                        (web), React Native/Expo (mobile) et Node.js/Express/MongoDB (backend). Développement de flux
+                        d'expédition/géolocalisation avec OpenStreetMap via Leaflet/React-Leaflet, contribution à
+                        l'authentification JWT et aux rôles, au chargement asynchrone des données
+                        (axios/react-query), à la validation de formulaires et aux opérations de déploiement.</span>
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">React</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">React Native</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Expo</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Node.js</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Express</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">MongoDB</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Leaflet</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">React Query</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">JWT</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Docker</span>
+                </div>
+
+                <div class="project-footer">
+                    <a href="https://xd.adobe.com/view/9ad6cb00-21cb-44d6-a000-ea3ec56ba974-cf85/grid" target="_blank"
+                        rel="noopener noreferrer" class="company-link" aria-label="Open Westic dashboard demo">
+                        <img src="images/logo_westic.jpg" alt="Westic" class="company-logo">
+                    </a>
+
+                    <div class="flex flex-row gap-2 items-end">
+                        <a href="https://xd.adobe.com/view/9ad6cb00-21cb-44d6-a000-ea3ec56ba974-cf85/grid"
+                            target="_blank" rel="noopener noreferrer"
+                            class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">
+                            <span
+                                class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                <span data-lang="en">Web Dashboard</span>
+                                <span data-lang="fr" class="hidden">Dashboard Web</span>
+                            </span>
+                        </a>
+                        <a href="https://xd.adobe.com/view/58678e2a-2623-4496-b23b-a63ca3f1aeb9-0d34/grid/"
+                            target="_blank" rel="noopener noreferrer"
+                            class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">
+                            <span
+                                class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                <span data-lang="en">Mobile App</span>
+                                <span data-lang="fr" class="hidden">Application Mobile</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- EmyeHR Chatbot -->
-            <div class="bg-white rounded-xl shadow-lg p-6" data-aos="fade-up">
+            <div class="bg-white rounded-xl shadow-lg p-6 project-card" data-aos="fade-up" data-aos-delay="600">
                 <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">Multi-agent AI System</h3>
                 <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">Système IA Multi-Agent</h3>
 
@@ -209,17 +602,12 @@
                         class="w-90 h-auto rounded-md my-4 shadow-custom">
                 </div>
                 <p class="text-gray-600 mb-4">
-                    <span data-lang="en">Architected and developed a sophisticated and interactive HR
-                        chatbot system with specialized AI agents for automating and
-                        handling of various HR functionalities.</span>
-                    <span data-lang="fr" class="hidden">
-                        Développement d'un système de chatbot RH sophistiqué et interactif avec des agents IA
-                        spécialisés
-                        pour l'automatisation et la gestion de diverses fonctionnalités RH.
-                    </span>
+                    <span data-lang="en">Architected and developed a sophisticated and interactive HR chatbot system
+                        with specialized AI agents for automating and handling various HR functionalities.</span>
+                    <span data-lang="fr" class="hidden">Développement d'un système de chatbot RH sophistiqué et
+                        interactif avec des agents IA spécialisés pour l'automatisation et la gestion de diverses
+                        fonctionnalités RH.</span>
                 </p>
-
-
 
                 <div class="flex flex-wrap gap-2">
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Python</span>
@@ -233,18 +621,25 @@
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Azure</span>
                 </div>
 
-                <div class="flex justify-center mt-5">
-                    <a href="https://youtu.be/hxBIjkUMz8U?si=loWxeTzMRuzMt6Pn" target="_blank"
-                        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+                <div class="project-footer">
+                    <a href="https://www.emye.fr/" target="_blank" rel="noopener noreferrer" class="company-link"
+                        aria-label="Open EmyeHR website">
+                        <img src="images/logo_emyehr.png" alt="EmyeHR" class="company-logo">
+                    </a>
+
+                    <a href="https://youtu.be/hxBIjkUMz8U?si=loWxeTzMRuzMt6Pn" target="_blank" rel="noopener noreferrer"
+                        class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">
                         <span
                             class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            View More
+                            <span data-lang="en">Watch Demo</span>
+                            <span data-lang="fr" class="hidden">Voir la démo</span>
+                        </span>
                     </a>
                 </div>
             </div>
 
             <!-- FlexiSpace -->
-            <div class="bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="bg-white rounded-xl shadow-lg p-6 project-card" data-aos="fade-up" data-aos-delay="700">
                 <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">FlexiSpace - Office Space Management</h3>
                 <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">FlexiSpace - Gestion de Bureau</h3>
 
@@ -257,10 +652,9 @@
                     <span data-lang="en">The platform features drag-and-drop office layout design, advanced reservation
                         rules, and collaboration tools, powered by constraint satisfaction algorithms and a hybrid
                         database.</span>
-                    <span data-lang="fr" class="hidden">
-                        Conception de plan de bureau par glisser-déposer, réservations rapides, alimentés par des
-                        algorithmes d'optimisation et une base de données hybride.
-                    </span>
+                    <span data-lang="fr" class="hidden">Conception de plan de bureau par glisser-déposer,
+                        réservations rapides, alimentés par des algorithmes d'optimisation et une base de données
+                        hybride.</span>
                 </p>
                 <div class="flex flex-wrap gap-2">
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Angular</span>
@@ -268,65 +662,26 @@
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">PostgreSQL</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">OptaPlanner</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Java</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                        Constraint satisfaction</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                        Optimization</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                        SCSS</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Constraint
+                        satisfaction</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Optimization</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">SCSS</span>
                 </div>
 
-                <div class="flex justify-center mt-5">
-                    <a href="https://www.emye.fr/flexoffice-reservation-de-bureau-parking-et-covoiturage-flexispace/"
-                        target="_blank"
-                        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
-                        <span
-                            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            View More
+                <div class="project-footer">
+                    <a href="https://www.emye.fr/" target="_blank" rel="noopener noreferrer" class="company-link"
+                        aria-label="Open EmyeHR website">
+                        <img src="images/logo_emyehr.png" alt="EmyeHR" class="company-logo">
                     </a>
-                </div>
-            </div>
 
-            <!-- Intelligent Surveys -->
-            <div class="bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">AI-Powered Customizable Surveys & Quizzes
-                </h3>
-                <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">Enquêtes et Questionnaires
-                    Intelligents
-                </h3>
-
-                <div class="flex justify-center">
-                    <img src="images/qsp.jpg?v=202509291000" alt="AI-Powered Surveys Thumbnail"
-                        class="w-90 h-auto rounded-md my-4 shadow-custom">
-                </div>
-
-                <p class="text-gray-600 mb-4">
-                    <span data-lang="en">A web component featuring AI-driven
-                        question generation, conditional branching, customizable themes, reusable templates, employee
-                        targeting, and more.</span>
-                    <span data-lang="fr" class="hidden">
-                        Un web-component avec génération de questions par IA, branches conditionnelles, thèmes
-                        personnalisables, modèles réutilisables, ciblage des employés, et plus.
-                    </span>
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                        Angular/Elements</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                        SCSS</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Web Components</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Node.js</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Generative AI</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">n8n</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">PostgreSQL</span>
-                </div>
-
-                <div class="flex justify-center mt-5">
-                    <a href="https://www.emye.fr/des-enquetes-ciblees-et-precises/" target="_blank"
-                        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+                    <a href="https://www.emye.fr/flexoffice-reservation-de-bureau-parking-et-covoiturage-flexispace/"
+                        target="_blank" rel="noopener noreferrer"
+                        class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">
                         <span
                             class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            View More
+                            <span data-lang="en">Open Product Page</span>
+                            <span data-lang="fr" class="hidden">Voir la page produit</span>
+                        </span>
                     </a>
                 </div>
             </div>
@@ -345,27 +700,24 @@
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-
-            <!-- FlexiSpace -->
-            <div class="bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="bg-white rounded-xl shadow-lg p-6 project-card" data-aos="fade-up" data-aos-delay="100">
                 <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">Job Postings Module</h3>
                 <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">Module Fiches de Poste</h3>
 
                 <div class="flex justify-center">
-                    <img src="images/jobposting.png?v=202509291000" alt="Office Space Management Thumbnail"
+                    <img src="images/jobposting.png?v=202509291000" alt="Job posting module"
                         class="w-90 h-auto rounded-md my-4 shadow-custom">
                 </div>
 
                 <p class="text-gray-600 mb-4">
                     <span data-lang="en">Job posting management with tools for role creation, skill integration via
-                        ESCO, and real-time updates. Features include skill-based search, PDF exports, and interactive
-                        forms</span>
-                    <span data-lang="fr" class="hidden">Module de gestions des fiches de poste avec outils de création
-                        de rôles, intégration de compétences via ESCO et mises à jour en temps réel. Fonctionnalités
-                        incluent recherche par compétences, exports PDF et formulaires interactifs</span>
-
+                        ESCO, and real-time updates. Includes skill-based search, PDF exports, and interactive
+                        forms.</span>
+                    <span data-lang="fr" class="hidden">Module de gestion des fiches de poste avec création de
+                        rôles, intégration de compétences via ESCO et mises à jour en temps réel. Inclut recherche par
+                        compétences, export PDF et formulaires interactifs.</span>
                 </p>
+
                 <div class="flex flex-wrap gap-2">
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Angular</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Node.js</span>
@@ -377,37 +729,37 @@
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">n8n</span>
                 </div>
 
-                <div class="flex justify-center mt-5">
+                <div class="project-footer">
+                    <a href="https://www.emye.fr/" target="_blank" rel="noopener noreferrer" class="company-link"
+                        aria-label="Open EmyeHR website">
+                        <img src="images/logo_emyehr.png" alt="EmyeHR" class="company-logo">
+                    </a>
                     <a href="https://www.linkedin.com/posts/emyehr_rh-recrutement-ia-activity-7243998058810601472-9zGO"
-                        target="_blank"
-                        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+                        target="_blank" rel="noopener noreferrer"
+                        class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">
                         <span
                             class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            View More
+                            <span data-lang="en">Open Product Page</span>
+                            <span data-lang="fr" class="hidden">Voir la page produit</span>
+                        </span>
                     </a>
                 </div>
             </div>
-            <div class="bg-white rounded-xl shadow-lg p-6" data-aos="fade-up">
+
+            <div class="bg-white rounded-xl shadow-lg p-6 project-card" data-aos="fade-up" data-aos-delay="200">
                 <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">Leave Management System</h3>
                 <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">Gestionnaire des Congés</h3>
 
                 <div class="flex justify-center">
-                    <img src="images/conge.png?v=202509291000" alt="Multi-agent HR Assistant Thumbnail"
+                    <img src="images/conge.png?v=202509291000" alt="Leave management system"
                         class="w-90 h-auto rounded-md my-4 shadow-custom">
                 </div>
                 <p class="text-gray-600 mb-4">
-                    <span data-lang="en">
-                        A leave management system with advanced approval workflows, leave balance tracking,
-                        and integration with payroll systems.
-                    </span>
-                    <span data-lang="fr" class="hidden">
-                        Système de gestion des congés avec workflows d'approbation avancés, suivi des soldes de congés
-                        et
-                        intégration avec les systèmes de paie.
-                    </span>
+                    <span data-lang="en">Leave management with advanced approval workflows, leave balance tracking,
+                        and integration with payroll systems.</span>
+                    <span data-lang="fr" class="hidden">Gestion des congés avec workflows d'approbation avancés,
+                        suivi des soldes et intégration avec les systèmes de paie.</span>
                 </p>
-
-
 
                 <div class="flex flex-wrap gap-2">
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Angular</span>
@@ -419,74 +771,156 @@
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Data Extraction</span>
                 </div>
 
-                <div class="flex justify-center mt-5">
-                    <a href="https://www.emye.fr" target="_blank"
-                        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+                <div class="project-footer">
+                    <a href="https://www.emye.fr/" target="_blank" rel="noopener noreferrer" class="company-link"
+                        aria-label="Open EmyeHR website">
+                        <img src="images/logo_emyehr.png" alt="EmyeHR" class="company-logo">
+                    </a>
+                    <a href="https://www.emye.fr" target="_blank" rel="noopener noreferrer"
+                        class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">
                         <span
                             class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            View More
+                            <span data-lang="en">Open Product Page</span>
+                            <span data-lang="fr" class="hidden">Voir la page produit</span>
+                        </span>
                     </a>
                 </div>
             </div>
 
-
-            <div class="bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="bg-white rounded-xl shadow-lg p-6 project-card" data-aos="fade-up" data-aos-delay="300">
                 <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">Annual Meetings Module</h3>
                 <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">Module Entretiens Annuels</h3>
 
                 <div class="flex justify-center">
-                    <img src="images/entretiens.png?v=202509291000" alt="AI-Powered Surveys Thumbnail"
+                    <img src="images/entretiens.png?v=202509291000" alt="Annual meetings module"
                         class="w-90 h-auto rounded-md my-4 shadow-custom">
                 </div>
 
                 <p class="text-gray-600 mb-4">
-                    <span data-lang="en">Manages employee reviews with scheduling, customizable documents, AI-driven
-                        summaries, and automated reminders. Supports recurring evaluations, data aggregation, and
-                        validation workflows for streamlined performance tracking.</span>
-                    <span data-lang="fr" class="hidden">
-                        Gère les évaluations des employés avec planification, documents personnalisables, résumés
-                        générés par IA et rappels automatisés. Prend en charge les évaluations récurrentes, l'agrégation
-                        de données et les workflows de validation pour un suivi des performances simplifié.
-                    </span>
+                    <span data-lang="en">Manages employee reviews with scheduling, customizable documents,
+                        AI-generated summaries, and automated reminders.</span>
+                    <span data-lang="fr" class="hidden">Gère les évaluations employés avec planification,
+                        documents personnalisables, résumés IA et rappels automatiques.</span>
                 </p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                        Angular</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Angular</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Node.js</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                        SCSS</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">SCSS</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">PostgreSQL</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Generative AI</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">n8n</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Richtext Editors</span>
                 </div>
 
-                <div class="flex justify-center mt-5">
+                <div class="project-footer">
+                    <a href="https://www.emye.fr/" target="_blank" rel="noopener noreferrer" class="company-link"
+                        aria-label="Open EmyeHR website">
+                        <img src="images/logo_emyehr.png" alt="EmyeHR" class="company-logo">
+                    </a>
                     <a href="https://www.linkedin.com/posts/aimen-jouini-53124829_copiloterh-sirh-ia-ugcPost-7231290267851501568-UJye"
-                        target="_blank"
-                        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+                        target="_blank" rel="noopener noreferrer"
+                        class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">
                         <span
                             class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            View More
+                            <span data-lang="en">Open Product Page</span>
+                            <span data-lang="fr" class="hidden">Voir la page produit</span>
+                        </span>
                     </a>
                 </div>
             </div>
 
+            <div class="bg-white rounded-xl shadow-lg p-6 project-card" data-aos="fade-up" data-aos-delay="400">
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">AI-Powered Customizable Surveys & Quizzes
+                </h3>
+                <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">Enquêtes et Questionnaires
+                    Intelligents</h3>
 
-        </div>
-    </section>
+                <div class="flex justify-center">
+                    <img src="images/qsp.jpg?v=202509291000" alt="AI-Powered Surveys Thumbnail"
+                        class="w-90 h-auto rounded-md my-4 shadow-custom">
+                </div>
 
-    <section class="container mx-auto px-4 pt-10 pb-12">
-        <h2 id="open-source-projects" class="text-4xl font-bold mb-12 text-center">
-            <a href="#open-source-projects"
-                class="text-gray-800 hover:text-blue-600 transition-colors duration-200 no-underline">
-                <span data-lang="en">Open Source Projects</span>
-                <span data-lang="fr" class="hidden">Projets Open Source</span>
-            </a>
-        </h2>
+                <p class="text-gray-600 mb-4">
+                    <span data-lang="en">A web component featuring AI-driven question generation, conditional
+                        branching, customizable themes, reusable templates, employee targeting, and more.</span>
+                    <span data-lang="fr" class="hidden">Un web-component avec génération de questions par IA,
+                        branches conditionnelles, thèmes personnalisables, modèles réutilisables, ciblage des employés,
+                        et plus.</span>
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Angular/Elements</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">SCSS</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Web Components</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Node.js</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Generative AI</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">n8n</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">PostgreSQL</span>
+                </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white rounded-xl shadow-lg p-6" data-aos="fade-up">
+                <div class="project-footer">
+                    <a href="https://www.emye.fr/" target="_blank" rel="noopener noreferrer" class="company-link"
+                        aria-label="Open EmyeHR website">
+                        <img src="images/logo_emyehr.png" alt="EmyeHR" class="company-logo">
+                    </a>
+
+                    <a href="https://www.emye.fr/des-enquetes-ciblees-et-precises/" target="_blank"
+                        rel="noopener noreferrer"
+                        class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">
+                        <span
+                            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            <span data-lang="en">Open Product Page</span>
+                            <span data-lang="fr" class="hidden">Voir la page produit</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 project-card" data-aos="fade-up" data-aos-delay="500">
+                <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">Lodeep Recommendation Engine</h3>
+                <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">Moteur de Recommandation
+                    Lodeep</h3>
+
+                <div class="flex justify-center">
+                    <img src="images/cover_lodeep.png?v=202509291000" alt="Lodeep platform cover"
+                        class="w-90 h-auto rounded-md my-4 shadow-custom">
+                </div>
+
+                <p class="text-gray-600 mb-4">
+                    <span data-lang="en">Developed the backend of a recommendation system for suggesting study
+                        buddies, course materials, and club activities using a hybrid user-based and item-based
+                        collaborative filtering approach.</span>
+                    <span data-lang="fr" class="hidden">Développement du backend d'un système de recommandation pour
+                        proposer des partenaires d'étude, des ressources pédagogiques et des activités de clubs à
+                        partir d'une approche hybride de filtrage collaboratif utilisateur + item.</span>
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Node.js</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Express</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Python</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Flask</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">MongoDB</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Data Warehousing</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">ETL</span>
+                </div>
+
+                <div class="project-footer">
+                    <a href="https://lodeep.com/" target="_blank" rel="noopener noreferrer" class="company-link"
+                        aria-label="Open Lodeep website">
+                        <img src="images/logo_lodeep.ico" alt="Lodeep" class="company-logo">
+                    </a>
+                    <a href="https://lodeep.com/" target="_blank" rel="noopener noreferrer"
+                        class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">
+                        <span
+                            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            <span data-lang="en">Try for Free</span>
+                            <span data-lang="fr" class="hidden">Essayer gratuitement</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 project-card" data-aos="fade-up" data-aos-delay="600">
                 <h3 class="text-xl font-bold mb-3 text-center" data-lang="en">CSS Radar – Chrome CSS Change Sentinel
                 </h3>
                 <h3 class="text-xl font-bold mb-3 text-center hidden" data-lang="fr">CSS Radar – Sentinelle CSS pour
@@ -511,23 +945,30 @@
                     <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">CSS Tooling</span>
                 </div>
 
-                <div class="flex flex-col gap-3 items-center mt-6">
-                    <a href="css-radar" target="_blank"
-                        class="relative inline-flex items-center justify-center w-full p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-blue-500 to-purple-600 group-hover:from-blue-500 group-hover:to-purple-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-800">
-                        <span
-                            class="relative w-full text-center px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            <span data-lang="en">Visit Landing Page</span>
-                            <span data-lang="fr" class="hidden">Visiter la landing page</span>
-                        </span>
+                <div class="project-footer">
+                    <a href="https://github.com/dali-trabelsi" target="_blank" rel="noopener noreferrer"
+                        class="company-link" aria-label="Open GitHub profile">
+                        <img src="images/favicon.png?v=202509291000" alt="GitHub" class="company-logo">
                     </a>
-                    <a href="https://github.com/dali-trabelsi/CSS-Radar.git" target="_blank"
-                        class="relative inline-flex items-center justify-center w-full p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
-                        <span
-                            class="relative w-full text-center px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            <span data-lang="en">View on GitHub</span>
-                            <span data-lang="fr" class="hidden">Voir sur GitHub</span>
-                        </span>
-                    </a>
+                    <div class="flex flex-row gap-2 items-end">
+                        <a href="css-radar" target="_blank" rel="noopener noreferrer"
+                            class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-blue-500 to-purple-600 group-hover:from-blue-500 group-hover:to-purple-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-800 project-action">
+                            <span
+                                class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                <span data-lang="en">Visit Landing Page</span>
+                                <span data-lang="fr" class="hidden">Visiter la landing page</span>
+                            </span>
+                        </a>
+                        <a href="https://github.com/dali-trabelsi/CSS-Radar.git" target="_blank"
+                            rel="noopener noreferrer"
+                            class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 project-action">
+                            <span
+                                class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                <span data-lang="en">View on GitHub</span>
+                                <span data-lang="fr" class="hidden">Voir sur GitHub</span>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -573,26 +1014,45 @@
         AOS.init({ duration: 800, once: true });
 
         const langToggle = document.getElementById("langToggle");
+        const langToggleFloating = document.getElementById("langToggleFloating");
+        const headerLangToggleContainer = document.getElementById("headerLangToggleContainer");
+        const floatingLangToggleContainer = document.getElementById("floatingLangToggleContainer");
         let currentLang = location.pathname.includes("/fr") ? "fr" : "en";
         console.log(currentLang);
-        langToggle.addEventListener("click", () => {
+
+        function applyLanguageState() {
+            document.querySelectorAll("[data-lang]").forEach((el) => {
+                if (el.closest(".lang-toggle-btn")) {
+                    el.classList.toggle("opacity-50", el.dataset.lang !== currentLang);
+                } else {
+                    el.classList.toggle("hidden", el.dataset.lang !== currentLang);
+                }
+            });
+        }
+
+        function toggleLanguage() {
             currentLang = currentLang === "en" ? "fr" : "en";
-            document.querySelectorAll("[data-lang]").forEach((el) => {
-                if (el.parentElement === langToggle) {
-                    el.classList.toggle("opacity-50", el.dataset.lang !== currentLang);
-                } else {
-                    el.classList.toggle("hidden", el.dataset.lang !== currentLang);
-                }
-            });
-        });
+            applyLanguageState();
+        }
+
+        langToggle.addEventListener("click", toggleLanguage);
+        langToggleFloating.addEventListener("click", toggleLanguage);
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                floatingLangToggleContainer.classList.toggle("hidden", entry.isIntersecting);
+            },
+            {
+                root: null,
+                threshold: 0,
+                rootMargin: "-10px 0px 0px 0px"
+            }
+        );
+
+        observer.observe(headerLangToggleContainer);
+
         setTimeout(() => {
-            document.querySelectorAll("[data-lang]").forEach((el) => {
-                if (el.parentElement === langToggle) {
-                    el.classList.toggle("opacity-50", el.dataset.lang !== currentLang);
-                } else {
-                    el.classList.toggle("hidden", el.dataset.lang !== currentLang);
-                }
-            });
+            applyLanguageState();
         }, 100);
     </script>
 </body>
