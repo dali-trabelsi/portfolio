@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mohamed Ali Trabelsi | Links</title>
+    <meta name="description"
+        content="Quick links for Mohamed Ali Trabelsi: website, LinkedIn, GitHub, résumés, Upwork, and Freelancer." />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <style>
+        :root {
+            --bg: #eceff4;
+            --surface: #ffffff;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --border: #d8dde6;
+            --shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+            --shadow-hover: 0 14px 30px rgba(15, 23, 42, 0.08);
+            --accent: #0d41b1;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+            color: var(--text);
+            background: linear-gradient(180deg, #f8fafc 0%, var(--bg) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 640px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(1.9rem, 3.1vw, 2.4rem);
+        }
+
+        p {
+            margin: 0.35rem 0 0;
+            color: var(--muted);
+            font-size: 1.2rem;
+        }
+
+        .links {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.75rem 1.45rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+        }
+
+        .card,
+        .card * {
+            text-decoration: none !important;
+        }
+
+        .card:hover,
+        .card:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            border-color: #dbe2ef;
+            outline: none;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-weight: 600;
+            font-size: 1.6rem;
+            line-height: 1.15;
+        }
+
+        .card-icon {
+            color: var(--accent);
+            font-size: 1.6rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .card-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.25rem;
+        }
+
+        .card-url {
+            margin-top: 0;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--accent);
+            word-break: break-word;
+            text-align: right;
+            flex-shrink: 0;
+            max-width: 55%;
+            line-height: 1.25;
+        }
+
+        @media (min-width: 700px) {
+            body {
+                padding: 2rem;
+            }
+
+            .links {
+                gap: 0.85rem;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .card-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.55rem;
+            }
+
+            .card-title {
+                font-size: 1.6rem;
+            }
+
+            .card-url {
+                max-width: 100%;
+                text-align: left;
+                font-size: 1.05rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <header class="header">
+            <h1>Mohamed Ali Trabelsi</h1>
+            <p>Find me around the web</p>
+        </header>
+
+        <section class="links" aria-label="Social and professional links">
+            <a class="card" href="https://mohamedalitrabelsi.tn?ref=linktree" target="_blank" rel="noopener noreferrer">
+                <div class="card-row">
+                    <div class="card-title"><i class="bi bi-globe2 card-icon" aria-hidden="true"></i>Website</div>
+                    <div class="card-url">mohamedalitrabelsi.tn</div>
+                </div>
+            </a>
+
+            <a class="card" href="https://www.linkedin.com/in/mohamed-ali-trabelsi/" target="_blank"
+                rel="noopener noreferrer">
+                <div class="card-row">
+                    <div class="card-title"><i class="bi bi-linkedin card-icon" aria-hidden="true"></i>LinkedIn</div>
+                    <div class="card-url">linkedin.com/in/mohamed-ali-trabelsi</div>
+                </div>
+            </a>
+
+            <a class="card" href="https://github.com/dali-trabelsi" target="_blank" rel="noopener noreferrer">
+                <div class="card-row">
+                    <div class="card-title"><i class="bi bi-github card-icon" aria-hidden="true"></i>GitHub</div>
+                    <div class="card-url">github.com/dali-trabelsi</div>
+                </div>
+            </a>
+
+            <a class="card" href="https://www.upwork.com/freelancers/~017d363cc7e8f6efa1" target="_blank"
+                rel="noopener noreferrer">
+                <div class="card-row">
+                    <div class="card-title"><i class="bi bi-briefcase card-icon" aria-hidden="true"></i>Upwork</div>
+                    <div class="card-url">upwork.com/freelancers/~017d363cc7e8f6efa1</div>
+                </div>
+            </a>
+
+            <a class="card" href="https://www.freelancer.com/u/Muhamed65" target="_blank" rel="noopener noreferrer">
+                <div class="card-row">
+                    <div class="card-title"><i class="bi bi-briefcase card-icon" aria-hidden="true"></i>Freelancer.com
+                    </div>
+                    <div class="card-url">freelancer.com/u/Muhamed65</div>
+                </div>
+            </a>
+
+            <a class="card" href="/cv/Mohamed%20Ali%20Trabelsi%20(EN).pdf" target="_blank" rel="noopener noreferrer">
+                <div class="card-row">
+                    <div class="card-title"><i class="bi bi-file-earmark-text card-icon" aria-hidden="true"></i>Résumé
+                        (English)</div>
+                    <div class="card-url">Download PDF</div>
+                </div>
+            </a>
+
+            <a class="card" href="/cv/Mohamed%20Ali%20Trabelsi%20(FR).pdf" target="_blank" rel="noopener noreferrer">
+                <div class="card-row">
+                    <div class="card-title"><i class="bi bi-file-earmark-text card-icon" aria-hidden="true"></i>Résumé
+                        (Français)</div>
+                    <div class="card-url">Télécharger PDF</div>
+                </div>
+            </a>
+        </section>
+    </main>
+</body>
+
+</html>
